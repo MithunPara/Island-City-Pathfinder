@@ -15,6 +15,8 @@ mvn install
 
 After installation, you'll find an application named `generator.jar` in the `generator` directory, another file name `island.jar` in the `island` directory and a file named `visualizer.jar` in the `visualizer` one. 
 
+Or you can run any of our example scripts from our Scripts folder. Go to section "Example runs" in this ReadMe for more information. 
+
 ### Generator
 
 To run the generator, go to the `generator` directory, and use `java -jar` to run the product. Sample.mesh is the binary file containing the mesh.
@@ -129,7 +131,7 @@ In debug mode, it will visualize the polygon's segments and vertices as black, c
  ```
 
 ### Example runs
-To see a examples of the mesh, run any one of the scripts below in the main directory. The mesh will be saved as ../generator/sample.mesh.
+To see a examples of the mesh, run any one of the scripts below in the main directory. 
 
 ```sh Scripts/runAll```
 
