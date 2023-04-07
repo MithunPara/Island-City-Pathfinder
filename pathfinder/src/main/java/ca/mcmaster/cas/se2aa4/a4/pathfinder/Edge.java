@@ -4,24 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Edge<N> {
-    private Node<N> n1;
-    private Node<N> n2;
+    private Node<N> node;
     private double weight;
     private Map<String, Object> properties;
 
-    public Edge(Node<N> n1, Node<N> n2, double weight){
-        this.n1 = n1;
-        this.n2 = n2;
+    public Edge(Node<N> node, double weight){
+        this.node = node;
         this.weight = weight;
         this.properties = new HashMap<>();
     }
 
-    public Node<N> getN1(){
-        return this.n1;
-    }
-
-    public Node<N> getN2(){
-        return this.n2;
+    public Node<N> getNode(){
+        return this.node;
     }
 
     public double getWeight(){
