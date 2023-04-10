@@ -1,12 +1,34 @@
 package ca.mcmaster.cas.se2aa4.a4.pathfinder;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public interface GraphADT <N, E> {
-    public void addNode(N node);
-    public void addEdge(N n1, N n2, double weight, Map<String, Object> properties);
-    public boolean containsNode(N node);
+public abstract class GraphADT <T> {
+    protected List<Node<T>> nodes;
+    protected List<Edge<T>> edges;
+    protected Map<Node<T>, ArrayList<Edge<T>>> adjacencyList;
+
+    public GraphADT(){
+        this.nodes = new ArrayList<>();
+        this.edges = new ArrayList<>();
+        this.adjacencyList = new HashMap<>();
+    }
+    public abstract void addNode(Node<T> node);
+    public abstract void addEdge(Node<T> n1, Node<T> n2, double weight, Map<String, Object> properties);
+    public abstract boolean containsNode(Node<T> node);
 //    public boolean containsEdge (E edge);
-    public double getEdgeWeight(N n1, N n2);
+    public abstract double getEdgeWeight(Node<T> n1, Node<T> n2);
+    public List<Node<T>> getNodes(){
+        return this.nodes;
+    }
+
+    public List<Edge<T>> getEdges(){
+        return this.edges;
+    }
+    public List<Edge<T>> getConnectedEdges(Node<T> source){
+        return adjacencyList.get(source);
+    }
 
 }

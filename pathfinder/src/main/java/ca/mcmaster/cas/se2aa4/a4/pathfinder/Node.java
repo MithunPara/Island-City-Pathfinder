@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Node<T> {
     private T id;
+    private boolean isVisited; // to track whether node has been visited already in Dijkstra's algorithm
     private Map<String, Object> properties;
     public Node(T id){
         this.id = id;
@@ -21,5 +22,12 @@ public class Node<T> {
 
     public Object getPropertyValue(String property){
         return properties.get(property);
+    }
+
+    public void setVisited(boolean visited){
+        isVisited = visited;
+    }
+    public boolean isVisited(){
+        return this.isVisited;
     }
 }

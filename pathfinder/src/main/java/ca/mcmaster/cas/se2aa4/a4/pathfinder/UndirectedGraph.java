@@ -5,24 +5,24 @@ import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UndirectedGraph<N,E> implements GraphADT<N,E> {
-    private List<N> nodes;
-    private List<Edge<N>> edges;
-    private Map<N, ArrayList<Edge<N>>> adjacencyList;
+public class UndirectedGraph<T> extends GraphADT<T> {
+//    private List<N> nodes;
+//    private List<Edge<N>> edges;
+//    private Map<N, ArrayList<Edge<N>>> adjacencyList;
 
-    public UndirectedGraph(){
-        this.nodes = new ArrayList<>();
-        this.edges = new ArrayList<>();
-        this.adjacencyList = new HashMap<>();
-    }
+//    public UndirectedGraph(){
+//        this.nodes = new ArrayList<>();
+//        this.edges = new ArrayList<>();
+//        this.adjacencyList = new HashMap<>();
+//    }
 
-    public void addNode(N node){
+    public void addNode(Node<T> node){
         adjacencyList.put(node, new ArrayList<>());
         nodes.add(node);
     }
 
-    public void addEdge(N n1, N n2, double weight, Map<String, Object> properties){
-        Edge<N> edge = new Edge<>(n2, weight);
+    public void addEdge(Node<T> n1, Node<T> n2, double weight, Map<String, Object> properties){
+        Edge<T> edge = new Edge<>(n2, weight);
         for(Map.Entry<String, Object> entry: properties.entrySet()){
             edge.setProperty(entry.getKey(), entry.getValue());
         }
@@ -38,7 +38,7 @@ public class UndirectedGraph<N,E> implements GraphADT<N,E> {
         edges.add(edge);
     }
 
-    public boolean containsNode(N node){ // maybe modify the node methods, right now the nodes must be created with their id
+    public boolean containsNode(Node<T> node){ // maybe modify the node methods, right now the nodes must be created with their id
                                          // from the island then added to graph
         return nodes.contains(node);
     }
@@ -46,8 +46,8 @@ public class UndirectedGraph<N,E> implements GraphADT<N,E> {
                                             // island with type Edge already (Update interface later)
 //
 //    }
-    public double getEdgeWeight(N n1, N n2){
-        for(Edge<N> edge: adjacencyList.get(n1)){
+    public double getEdgeWeight(Node<T> n1, Node<T> n2){
+        for(Edge<T> edge: adjacencyList.get(n1)){
             if (edge.getNode().equals(n2)){
                 return edge.getWeight();
             }
@@ -55,15 +55,15 @@ public class UndirectedGraph<N,E> implements GraphADT<N,E> {
         return Double.MAX_VALUE;
     }
 
-    public List<N> getNodes(){
-        return this.nodes;
-    }
+//    public List<N> getNodes(){
+//        return this.nodes;
+//    }
 
-    public List<Edge<N>> getEdges(){
-        return this.edges;
-    }
+//    public List<Edge<N>> getEdges(){
+//        return this.edges;
+//    }
 
-    public List<Edge<N>> getConnectedEdges(N source){
-        return adjacencyList.get(source);
-    }
+//    public List<Edge<N>> getConnectedEdges(N source){
+//        return adjacencyList.get(source);
+//    }
 }

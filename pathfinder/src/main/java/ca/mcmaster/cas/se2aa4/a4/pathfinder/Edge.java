@@ -3,18 +3,18 @@ package ca.mcmaster.cas.se2aa4.a4.pathfinder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Edge<N> {
-    private N node;
+public class Edge<T> {
+    private Node<T> node;
     private double weight;
     private Map<String, Object> properties;
 
-    public Edge(N node, double weight){
+    public Edge(Node<T> node, double weight){
         this.node = node;
         this.weight = weight;
         this.properties = new HashMap<>();
     }
 
-    public N getNode(){
+    public Node<T> getNode(){
         return this.node;
     }
 
