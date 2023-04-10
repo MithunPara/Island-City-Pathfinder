@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Edge<N> {
-    private Node<N> node;
+    private N node;
     private double weight;
     private Map<String, Object> properties;
 
-    public Edge(Node<N> node, double weight){
+    public Edge(N node, double weight){
         this.node = node;
         this.weight = weight;
         this.properties = new HashMap<>();
     }
 
-    public Node<N> getNode(){
+    public N getNode(){
         return this.node;
     }
 
