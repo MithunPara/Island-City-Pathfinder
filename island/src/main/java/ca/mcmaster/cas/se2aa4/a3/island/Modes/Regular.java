@@ -22,15 +22,17 @@ public class Regular extends Mode {
     private int maxNumLakes;
     private int maxNumRivers;
     private int numAquifers;
+    private int numCities;
     
 
-    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil, int numAquifers) throws IOException{
+    public Regular(String inputMesh, String outputMesh, ShapeType shapeType, AltitudeType altitudeType, BiomeTypes biome, int maxLakes, int maxNumRivers, SoilTypes soil, int numAquifers, int numCities) throws IOException{
         super(inputMesh, outputMesh, shapeType, altitudeType, biome, Integer.toString(maxLakes),soil);
         
         extractInformation();
         this.maxNumLakes = maxLakes;
         this.maxNumRivers = maxNumRivers;
         this.numAquifers = numAquifers;
+        this.numCities = numCities;
     }
 
     public void generate(){

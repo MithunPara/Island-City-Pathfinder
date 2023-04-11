@@ -24,7 +24,7 @@ public class SetUpTest {
     @BeforeAll
     public static void setUp(){
         try{
-            Regular reg=new Regular("./test.mesh", "output_test.mesh", ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, 5, 10, SoilTypes.WET, 3);
+            Regular reg=new Regular("./test.mesh", "output_test.mesh", ShapeType.CIRCLE, AltitudeType.VOLCANIC, BiomeTypes.ARCTIC, 5, 10, SoilTypes.WET, 3, 5);
             reg.generate();
             width=  reg.getWidth();
             height= reg.getHeight();
