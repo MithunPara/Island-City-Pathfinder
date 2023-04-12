@@ -38,6 +38,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public void setColor(Color color){
         this.averageColor = color;
     }
+    public Color getColor(){return averageColor;}
 
 
     public void setElevation(Double elevation){
@@ -67,6 +68,7 @@ public class TileVertex extends ExtractVertexInfo implements TileProperties{
     public void setThickness(double thickness){
         this.thicknessDouble = thickness;
     }
+    public Double getThicknessDouble() {return thicknessDouble;}
 
     public void setVertexWater(){
         vertexElement = VertexElement.WATER;

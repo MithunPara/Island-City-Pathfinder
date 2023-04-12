@@ -12,6 +12,7 @@ public class Node<T> implements Comparable<Node<T>>{
         this.id = id;
         this.properties = new HashMap<>();
         this.cost = Double.POSITIVE_INFINITY;
+        this.isVisited = false;
     }
 
     public int compareTo(Node<T> otherNode){

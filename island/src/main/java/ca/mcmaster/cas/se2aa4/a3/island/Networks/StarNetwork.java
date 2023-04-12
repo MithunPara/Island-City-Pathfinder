@@ -10,6 +10,7 @@ import ca.mcmaster.cas.se2aa4.a4.pathfinder.Node;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.ShortestPath;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.UndirectedGraph;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class StarNetwork {
     private List<Node<TileVertex>> nodePath;
     private Node<TileVertex> centralHub;
     private List<TileVertex> cityCentroids;
+    private List<TileVertex> pathTileCentroids;
     private List<Edge<TileVertex>> pathEdges;
     private List<Land> networkArea;
     public StarNetwork(UndirectedGraph<TileVertex> graph, List<Node<TileVertex>> cities, List<Land> landTiles){
@@ -29,15 +31,19 @@ public class StarNetwork {
         this.pathEdges = new ArrayList<>();
         this.nodePath = new ArrayList<>();
         this.networkArea = landTiles;
+        this.pathTileCentroids = new ArrayList<>();
     }
 
     public void createNetwork(){
         for(Node<TileVertex> city: cities){
             if(city.getPropertyValue("City Type").equals(CityType.CAPITAL)){
                 centralHub = city; // extract the capital city from the list of cities
+                centralHub.setProperty("Colour", new Color(255,0,0));
             }
         }
         cities.remove(centralHub);
+        cityCentroids.add(centralHub.getId());
+
 
         for(Node<TileVertex> city: cities){
             ShortestPath<TileVertex> path = new ShortestPath<>();
@@ -45,10 +51,11 @@ public class StarNetwork {
 
             if(nodePath != null){
                 for(Node<TileVertex> node: nodePath){ // get the centroids that make up the shortest path
-                    cityCentroids.add(node.getId());
+                    pathTileCentroids.add(node.getId());
                 }
             }
-            System.out.println(nodePath);
+            city.setProperty("Colour", new Color(0,0,0));
+            cityCentroids.add(city.getId());
         }
 
 //        List<Edge<TileVertex>> potentialPathEdges;
@@ -60,18 +67,18 @@ public class StarNetwork {
 //                }
 //            }
 //        }
-        createPath(cityCentroids); // change the thickness of path edges
+        createPath(pathTileCentroids); // change the thickness of path edges
         createCities(cityCentroids); // change the thickness of city vertices
     }
 
-    private void createPath(List<TileVertex> cityCentroids){
+    private void createPath(List<TileVertex> pathCentroids){
         List<TileSegment> neighbouringSegments;
         for(Land landTile: networkArea){
             Tile tile = landTile.getTile();
             neighbouringSegments = tile.getNeighbouringTileSegments();
             for(TileSegment neighbouringSegment: neighbouringSegments){
-                if(cityCentroids.contains(neighbouringSegment.getTileVertex1()) && cityCentroids.contains(neighbouringSegment.getTileVertex2())){
-                    neighbouringSegment.setThickness(25.0);
+                if(pathCentroids.contains(neighbouringSegment.getTileVertex1()) && pathCentroids.contains(neighbouringSegment.getTileVertex2())){
+                    neighbouringSegment.setThickness(2.0);
                 }
             }
         }
@@ -81,9 +88,22 @@ public class StarNetwork {
         for(Land landTile: networkArea){
             Tile tile = landTile.getTile();
             TileVertex tileCentroid = tile.getCentroid();
-            if(cityCentroids.contains(tileCentroid)){
-                tileCentroid.setThickness(50.0);
+            for(Node<TileVertex> cityCentroid: cities){
+                if(cityCentroid.getId().equals(tileCentroid)){
+                    System.out.println(cityCentroid.getPropertyValue("Colour"));
+                    tileCentroid.setColor((Color) cityCentroid.getPropertyValue("Colour"));
+                    tileCentroid.setThickness(10.0);
+                }
             }
+            if(centralHub.getId().equals(tileCentroid)){
+                System.out.println(centralHub.getPropertyValue("Colour"));
+                tileCentroid.setColor((Color) centralHub.getPropertyValue("Colour"));
+                tileCentroid.setThickness(10.0);
+            }
+//            if(cityCentroids.contains(tileCentroid)){
+//                tileCentroid.setColor();
+//                tileCentroid.setThickness(10.0);
+//            }
         }
     }
 

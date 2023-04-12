@@ -28,7 +28,7 @@ public class ShortestPath<T> implements Path<T> {
             node.setVisited(true);
 
             if (node.equals(target)) {
-                return getPath(parentNodes, node);
+                return getPath(parentNodes, source, node);
             }
 
             for (Edge<T> edge : graph.getConnectedEdges(node)) {
@@ -50,13 +50,13 @@ public class ShortestPath<T> implements Path<T> {
         return null;
     }
 
-    private List<Node<T>> getPath(Map<Node<T>, Node<T>> parentNodes, Node<T> targetNode){
+    private List<Node<T>> getPath(Map<Node<T>, Node<T>> parentNodes, Node<T> sourceNode, Node<T> targetNode){
         Node<T> node = targetNode;
         while(parentNodes.containsKey(node)){
             path.add(0, node);
             node = parentNodes.get(node);
         }
-        //path.add(sourceNode); test later, not sure if first node is included in path
+        path.add(0, sourceNode); //test later, not sure if first node is included in path
         return path;
     }
 }
