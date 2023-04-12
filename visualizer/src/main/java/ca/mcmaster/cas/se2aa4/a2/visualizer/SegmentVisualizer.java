@@ -25,6 +25,11 @@ public class SegmentVisualizer extends ExtractSegmentInfo implements colourExtra
         {
             segmentColor = Color.BLACK;
         }
+        else if(segmentType.equals("Neighbouring"))
+        {
+            segmentColor = Color.BLACK;
+            this.thickness = Double.valueOf(segment.getProperties(1).getValue());
+        }
         else
         {
             segmentColor = extractColor(segment.getPropertiesList());

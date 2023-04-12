@@ -15,11 +15,11 @@ public class Edge<T> {
     }
 
     public Node<T> getNode(){
-        return this.node;
+        return node;
     }
 
     public double getWeight(){
-        return this.weight;
+        return weight;
     }
 
     public void setProperty(String property, Object value){

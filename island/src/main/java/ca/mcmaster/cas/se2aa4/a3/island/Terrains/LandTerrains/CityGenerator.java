@@ -12,18 +12,19 @@ import java.util.List;
 public class CityGenerator {
     private int numCities;
     private List<Land> landTiles;
+    private UndirectedGraph<TileVertex> graph;
     private List<Node<Integer>> graphNodes;
     private List<Node<TileVertex>> cityNodes;
     public CityGenerator(List<Land> allLand, int numCities) {
         this.numCities = numCities;
         this.landTiles = allLand;
         this.cityNodes = new ArrayList<>();
+        this.graph = new UndirectedGraph<>();
     }
 
     public void generate() {
         // create the cities passing in nodes
         // add properties to the nodes (elevation, name of city, population, Tilevertex for city nodes)
-        UndirectedGraph<TileVertex> graph = new UndirectedGraph<>();
 
         for (Land landTile : landTiles) { // add a node for each land tile to the graph
             Tile tile = landTile.getTile();
@@ -37,12 +38,13 @@ public class CityGenerator {
             TileVertex centroid = tile.getCentroid();
             List<Tile> neighbouringTiles = tile.getNeighbouringTile();
             for (Tile tile2 : neighbouringTiles) {
-                TileVertex neighbourCentroid = tile2.getCentroid();
-                graph.addEdge(graph.getNode(centroid), graph.getNode(neighbourCentroid), calculateDistance(centroid, neighbourCentroid));
+                if(tile2.isTileLand()){
+                    TileVertex neighbourCentroid = tile2.getCentroid();
+                    graph.addEdge(graph.getNode(centroid), graph.getNode(neighbourCentroid), calculateDistance(centroid, neighbourCentroid));
+                }
             }
         }
 
-        boolean capitalExists = false;
         for (int i = 0; i < numCities; i++) {
             Node<TileVertex> cityNode;
             do {
@@ -74,6 +76,10 @@ public class CityGenerator {
     }
 
     public List<Node<TileVertex>> getCities(){
-        return this.cityNodes;
+        return cityNodes;
+    }
+
+    public UndirectedGraph<TileVertex> getGraph() {
+        return graph;
     }
 }

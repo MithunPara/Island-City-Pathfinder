@@ -4,22 +4,24 @@ import java.util.*;
 import java.util.PriorityQueue;
 
 public class ShortestPath<T> implements Path<T> {
-    private Map<Node<T>, Double> nodeCost;
     private Map<Node<T>, Node<T>> parentNodes;
     private List<Node<T>> path;
     private PriorityQueue<Node<T>> queue = new PriorityQueue<>();
 
     public ShortestPath(){
-        this.nodeCost = new HashMap<>();
         this.parentNodes = new HashMap<>();
         this.path = new ArrayList<>();
     }
     public List<Node<T>> findPath(GraphADT<T> graph, Node<T> source, Node<T> target) {
-        for(Node<T> node: graph.getNodes()){
-            nodeCost.put(node, Double.MAX_VALUE);
+
+        for(Node<T> node: graph.getNodes()){ // reset values so algorithm can be run multiple times using same nodes
+            node.setCost(Double.POSITIVE_INFINITY);
+            node.setVisited(false);
         }
-        nodeCost.put(source, 0.0);
+
+        source.setCost(0.0);
         queue.add(source);
+        System.out.println("Source: " + source + "Target: " + target);
 
         while(!queue.isEmpty()){
             Node<T> node = queue.poll();
@@ -32,8 +34,13 @@ public class ShortestPath<T> implements Path<T> {
             for (Edge<T> edge : graph.getConnectedEdges(node)) {
                 Node<T> neighbourNode = edge.getNode();
                 if(!neighbourNode.isVisited()) {
-                    if ((nodeCost.get(node) + edge.getWeight()) < nodeCost.get(neighbourNode)) {
-                        nodeCost.put(neighbourNode, nodeCost.get(node) + edge.getWeight());
+//                    if ((nodeCost.get(node) + edge.getWeight()) < nodeCost.get(neighbourNode)) {
+//                        nodeCost.put(neighbourNode, nodeCost.get(node) + edge.getWeight());
+//                        parentNodes.put(neighbourNode, node);
+//                        queue.add(neighbourNode);
+//                    }
+                    if ((node.getCost() + edge.getWeight()) < neighbourNode.getCost()) {
+                        neighbourNode.setCost(node.getCost() + edge.getWeight());
                         parentNodes.put(neighbourNode, node);
                         queue.add(neighbourNode);
                     }

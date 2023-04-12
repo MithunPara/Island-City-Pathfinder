@@ -2,7 +2,7 @@ cd generator
 java -jar generator.jar regular.Mesh -i -np 1500 -relation 25 -wth 500 -hth 500
 cd ..
 cd island
-java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2
+java -jar island.jar -i ../generator/regular.mesh -o desert.mesh --mode regular --shape irregular --altitude hills --biomes desert --lakes 2 --rivers 2 -soil dry --aquifers 2 --cities 5
 cd ..
 cd visualizer
 java -jar visualizer.jar ../island/desert.mesh desert.svg

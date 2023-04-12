@@ -40,6 +40,10 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
         this.tileVertex2 = vertex;
     }
 
+    public TileVertex getTileVertex1(){return tileVertex1;}
+    public TileVertex getTileVertex2(){return tileVertex2;}
+
+
     public void setRiver(){
         isRiver = true;
         numRivers++;
@@ -56,6 +60,7 @@ public class TileSegment extends ExtractSegmentInfo implements TileProperties{
         tileVertex2.setRiver();
     }
 
+    public void setThickness(double thickness) { thicknessDouble = thickness; }
     public double getThickness(){
         return thicknessDouble; 
     }

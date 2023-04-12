@@ -3,17 +3,30 @@ package ca.mcmaster.cas.se2aa4.a4.pathfinder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Node<T> {
+public class Node<T> implements Comparable<Node<T>>{
     private T id;
     private boolean isVisited; // to track whether node has been visited already in Dijkstra's algorithm
     private Map<String, Object> properties;
+    private double cost;
     public Node(T id){
         this.id = id;
         this.properties = new HashMap<>();
+        this.cost = Double.POSITIVE_INFINITY;
+    }
+
+    public int compareTo(Node<T> otherNode){
+        return Double.compare(cost, otherNode.getCost());
     }
 
     public T getId(){
-        return this.id;
+        return id;
+    }
+
+    public void setCost(double cost){
+        this.cost = cost;
+    }
+    public double getCost(){
+        return cost;
     }
 
     public void setProperty(String property, Object value){
@@ -29,9 +42,9 @@ public class Node<T> {
     }
 
     public void setVisited(boolean visited){
-        isVisited = visited;
+        this.isVisited = visited;
     }
     public boolean isVisited(){
-        return this.isVisited;
+        return isVisited;
     }
 }

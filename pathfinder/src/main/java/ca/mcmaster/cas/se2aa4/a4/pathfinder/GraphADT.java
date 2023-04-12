@@ -29,11 +29,11 @@ public abstract class GraphADT <T> {
         return null;
     }
     public List<Node<T>> getNodes(){
-        return this.nodes;
+        return nodes;
     }
 
     public List<Edge<T>> getEdges(){
-        return this.edges;
+        return edges;
     }
     public List<Edge<T>> getConnectedEdges(Node<T> source){
         return adjacencyList.get(source);
