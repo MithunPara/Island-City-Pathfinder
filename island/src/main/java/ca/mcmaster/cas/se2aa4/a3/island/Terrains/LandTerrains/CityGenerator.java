@@ -6,6 +6,7 @@ import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.Node;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.UndirectedGraph;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +56,7 @@ public class CityGenerator {
             if(i == 0){ // first randomly selected node is set to be the capital city
                 cityNode.setProperty("City Type", CityType.CAPITAL);
                 cityNode.setProperty("Population", CityType.CAPITAL.getPopulation());
+                cityNode.setProperty("Colour", new Color(255,0,0));
             }
             else{ // select the city types for the other cities and make sure they are not capital cities
                 CityType[] types = CityType.values();
@@ -64,6 +66,7 @@ public class CityGenerator {
                 } while(randomCityType.equals(CityType.CAPITAL));
                 cityNode.setProperty("City Type", randomCityType);
                 cityNode.setProperty("Population", randomCityType.getPopulation());
+                cityNode.setProperty("Colour", new Color(0,0,0));
             }
             cityNodes.add(cityNode);
         }

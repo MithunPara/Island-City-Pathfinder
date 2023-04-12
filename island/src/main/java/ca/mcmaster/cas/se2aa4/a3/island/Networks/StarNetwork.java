@@ -38,7 +38,6 @@ public class StarNetwork {
         for(Node<TileVertex> city: cities){
             if(city.getPropertyValue("City Type").equals(CityType.CAPITAL)){
                 centralHub = city; // extract the capital city from the list of cities
-                centralHub.setProperty("Colour", new Color(255,0,0));
             }
         }
         cities.remove(centralHub);
@@ -54,22 +53,10 @@ public class StarNetwork {
                     pathTileCentroids.add(node.getId());
                 }
             }
-            city.setProperty("Colour", new Color(0,0,0));
             cityCentroids.add(city.getId());
             createPath(pathTileCentroids); // change the thickness of path edges
             pathTileCentroids.clear();
         }
-
-//        List<Edge<TileVertex>> potentialPathEdges;
-//        for(Node<TileVertex> node: nodePath){ // get the edges that make up the shortest paths between capital city and other cities
-//            potentialPathEdges = graph.getConnectedEdges(node);
-//            for(Edge<TileVertex> edge: potentialPathEdges){
-//                if(nodePath.contains(edge.getNode()) && !pathEdges.contains(edge)){
-//                    pathEdges.add(edge);
-//                }
-//            }
-//        }
-//        createPath(pathTileCentroids); // change the thickness of path edges
         createCities(cityCentroids); // change the thickness of city vertices
     }
 
@@ -92,13 +79,11 @@ public class StarNetwork {
             TileVertex tileCentroid = tile.getCentroid();
             for(Node<TileVertex> cityCentroid: cities){
                 if(cityCentroid.getId().equals(tileCentroid)){
-                    System.out.println(cityCentroid.getPropertyValue("Colour"));
                     tileCentroid.setColor((Color) cityCentroid.getPropertyValue("Colour"));
                     tileCentroid.setThickness((int) cityCentroid.getPropertyValue("Population"));
                 }
             }
             if(centralHub.getId().equals(tileCentroid)){
-                System.out.println(centralHub.getPropertyValue("Colour"));
                 tileCentroid.setColor((Color) centralHub.getPropertyValue("Colour"));
                 tileCentroid.setThickness((int) centralHub.getPropertyValue("Population"));
             }
