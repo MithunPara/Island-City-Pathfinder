@@ -56,6 +56,8 @@ public class StarNetwork {
             }
             city.setProperty("Colour", new Color(0,0,0));
             cityCentroids.add(city.getId());
+            createPath(pathTileCentroids); // change the thickness of path edges
+            pathTileCentroids.clear();
         }
 
 //        List<Edge<TileVertex>> potentialPathEdges;
@@ -67,7 +69,7 @@ public class StarNetwork {
 //                }
 //            }
 //        }
-        createPath(pathTileCentroids); // change the thickness of path edges
+//        createPath(pathTileCentroids); // change the thickness of path edges
         createCities(cityCentroids); // change the thickness of city vertices
     }
 
