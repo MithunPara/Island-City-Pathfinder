@@ -94,13 +94,13 @@ public class StarNetwork {
                 if(cityCentroid.getId().equals(tileCentroid)){
                     System.out.println(cityCentroid.getPropertyValue("Colour"));
                     tileCentroid.setColor((Color) cityCentroid.getPropertyValue("Colour"));
-                    tileCentroid.setThickness(10.0);
+                    tileCentroid.setThickness((int) cityCentroid.getPropertyValue("Population"));
                 }
             }
             if(centralHub.getId().equals(tileCentroid)){
                 System.out.println(centralHub.getPropertyValue("Colour"));
                 tileCentroid.setColor((Color) centralHub.getPropertyValue("Colour"));
-                tileCentroid.setThickness(10.0);
+                tileCentroid.setThickness((int) centralHub.getPropertyValue("Population"));
             }
 //            if(cityCentroids.contains(tileCentroid)){
 //                tileCentroid.setColor();

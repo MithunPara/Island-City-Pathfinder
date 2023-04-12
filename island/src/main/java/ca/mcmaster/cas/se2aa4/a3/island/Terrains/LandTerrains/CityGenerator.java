@@ -54,6 +54,7 @@ public class CityGenerator {
 
             if(i == 0){ // first randomly selected node is set to be the capital city
                 cityNode.setProperty("City Type", CityType.CAPITAL);
+                cityNode.setProperty("Population", CityType.CAPITAL.getPopulation());
             }
             else{ // select the city types for the other cities and make sure they are not capital cities
                 CityType[] types = CityType.values();
@@ -62,6 +63,7 @@ public class CityGenerator {
                     randomCityType = types[IslandCommandLineReader.randomGenerator.getNextInteger(0, types.length)];
                 } while(randomCityType.equals(CityType.CAPITAL));
                 cityNode.setProperty("City Type", randomCityType);
+                cityNode.setProperty("Population", randomCityType.getPopulation());
             }
             cityNodes.add(cityNode);
         }
