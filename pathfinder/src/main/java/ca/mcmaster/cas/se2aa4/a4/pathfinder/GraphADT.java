@@ -20,6 +20,14 @@ public abstract class GraphADT <T> {
     public abstract boolean containsNode(Node<T> node);
 //    public boolean containsEdge (E edge);
     public abstract double getEdgeWeight(Node<T> n1, Node<T> n2);
+    public Node<T> getNode(T id){
+        for(Node<T> node: nodes){
+            if(node.getId().equals(id)){
+                return node;
+            }
+        }
+        return null;
+    }
     public List<Node<T>> getNodes(){
         return this.nodes;
     }

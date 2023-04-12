@@ -5,6 +5,7 @@ import java.util.List;
 
 import ca.mcmaster.cas.se2aa4.a3.island.Altitude.*;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.BeachGenerator;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.CityGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.AquiferGenerator;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.WaterTerrains.LakeGenerator;
@@ -101,6 +102,8 @@ public class Regular extends Mode {
             landBiome = generalBiome.getTileBiome(landTile.getHumidity(), landTile.getAverageTemperature());
             landTile.setTileType(landBiome);
         }
+
+        CityGenerator cityGenerator = new CityGenerator(allLand, numCities);
 
         //Set humidity contrast colours to all land tiles
         humidity.setHumidityColors(allLand);

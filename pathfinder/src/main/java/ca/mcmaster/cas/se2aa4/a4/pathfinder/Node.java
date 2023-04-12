@@ -24,6 +24,10 @@ public class Node<T> {
         return properties.get(property);
     }
 
+    public boolean hasProperty(String property){
+        return properties.containsKey(property);
+    }
+
     public void setVisited(boolean visited){
         isVisited = visited;
     }
