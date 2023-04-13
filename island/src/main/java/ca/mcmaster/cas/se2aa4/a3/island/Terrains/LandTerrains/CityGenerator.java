@@ -3,6 +3,7 @@ package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
+import ca.mcmaster.cas.se2aa4.a3.island.Terrains.Generator;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Node;
 import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.UndirectedGraph;
 
@@ -10,11 +11,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityGenerator {
+public class CityGenerator implements Generator {
     private int numCities;
     private List<Land> landTiles;
     private UndirectedGraph<TileVertex> graph;
-    private List<Node<Integer>> graphNodes;
     private List<Node<TileVertex>> cityNodes;
     public CityGenerator(List<Land> allLand, int numCities) {
         this.numCities = numCities;
