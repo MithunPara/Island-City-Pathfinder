@@ -3,8 +3,8 @@ package ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.Tile;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.IslandCommandLineReader;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.Node;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.UndirectedGraph;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Node;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.UndirectedGraph;
 
 import java.awt.*;
 import java.util.ArrayList;

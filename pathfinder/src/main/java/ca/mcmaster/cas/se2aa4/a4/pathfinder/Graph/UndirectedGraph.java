@@ -1,20 +1,9 @@
-package ca.mcmaster.cas.se2aa4.a4.pathfinder;
+package ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
 
 public class UndirectedGraph<T> extends GraphADT<T> {
-//    private List<N> nodes;
-//    private List<Edge<N>> edges;
-//    private Map<N, ArrayList<Edge<N>>> adjacencyList;
-
-//    public UndirectedGraph(){
-//        this.nodes = new ArrayList<>();
-//        this.edges = new ArrayList<>();
-//        this.adjacencyList = new HashMap<>();
-//    }
 
     public void addNode(Node<T> node){
         adjacencyList.put(node, new ArrayList<>());
@@ -61,14 +50,6 @@ public class UndirectedGraph<T> extends GraphADT<T> {
         edges.add(edge);
     }
 
-    public boolean containsNode(Node<T> node){ // maybe modify the node methods, right now the nodes must be created with their id
-                                         // from the island then added to graph
-        return nodes.contains(node);
-    }
-//    public boolean containsEdge (E edge){ // do we need this method bc not adding any edges to graph directly from
-                                            // island with type Edge already (Update interface later)
-//
-//    }
     public double getEdgeWeight(Node<T> n1, Node<T> n2){
         for(Edge<T> edge: adjacencyList.get(n1)){
             if (edge.getNode().equals(n2)){
@@ -77,16 +58,4 @@ public class UndirectedGraph<T> extends GraphADT<T> {
         }
         return Double.MAX_VALUE;
     }
-
-//    public List<N> getNodes(){
-//        return this.nodes;
-//    }
-
-//    public List<Edge<N>> getEdges(){
-//        return this.edges;
-//    }
-
-//    public List<Edge<N>> getConnectedEdges(N source){
-//        return adjacencyList.get(source);
-//    }
 }

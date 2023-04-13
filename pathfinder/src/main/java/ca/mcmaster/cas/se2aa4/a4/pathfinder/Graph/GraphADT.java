@@ -1,4 +1,4 @@
-package ca.mcmaster.cas.se2aa4.a4.pathfinder;
+package ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,8 +17,6 @@ public abstract class GraphADT <T> {
     }
     public abstract void addNode(Node<T> node);
     public abstract void addEdge(Node<T> n1, Node<T> n2, double weight, Map<String, Object> properties);
-    public abstract boolean containsNode(Node<T> node);
-//    public boolean containsEdge (E edge);
     public abstract double getEdgeWeight(Node<T> n1, Node<T> n2);
     public Node<T> getNode(T id){
         for(Node<T> node: nodes){

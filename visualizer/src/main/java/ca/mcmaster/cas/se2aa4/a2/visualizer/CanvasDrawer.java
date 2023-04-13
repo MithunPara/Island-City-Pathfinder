@@ -65,6 +65,19 @@ public class CanvasDrawer {
             }
         }
 
+        for(PolygonVisualizer polygon: polygons){
+            for (Integer i : polygon.getNeighbouringSegmentsId()) {
+                SegmentVisualizer segment = segmentVisualsList.get(i);
+                if(segment.getThickness() > 0.5){ // only draw the neighbouring segment if it is a road segment (by default road segments have thickness of 2.0)
+                    drawSegment(segment);
+                }
+            }
+        }
+
+        for (int i = 0; i < polygons.size(); i++){
+            drawVertex(i);
+        }
+
         //Print all Vertices for each polygon
         for (PolygonVisualizer polygon : polygons) {
             //print each segment of that polygon one by one 
@@ -115,7 +128,6 @@ public class CanvasDrawer {
         //Output debug elements
         for (Integer i : polygon.getNeighbouringSegmentsId()) {
             SegmentVisualizer segmentVisual = segmentVisualsList.get(i);
-
             drawSegment(segmentVisual);
         }
     }

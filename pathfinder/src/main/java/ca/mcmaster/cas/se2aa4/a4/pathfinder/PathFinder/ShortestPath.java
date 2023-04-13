@@ -1,4 +1,8 @@
-package ca.mcmaster.cas.se2aa4.a4.pathfinder;
+package ca.mcmaster.cas.se2aa4.a4.pathfinder.PathFinder;
+
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Edge;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.GraphADT;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Node;
 
 import java.util.*;
 import java.util.PriorityQueue;
@@ -21,7 +25,6 @@ public class ShortestPath<T> implements Path<T> {
 
         source.setCost(0.0);
         queue.add(source);
-        System.out.println("Source: " + source + "Target: " + target);
 
         while(!queue.isEmpty()){
             Node<T> node = queue.poll();
@@ -34,11 +37,6 @@ public class ShortestPath<T> implements Path<T> {
             for (Edge<T> edge : graph.getConnectedEdges(node)) {
                 Node<T> neighbourNode = edge.getNode();
                 if(!neighbourNode.isVisited()) {
-//                    if ((nodeCost.get(node) + edge.getWeight()) < nodeCost.get(neighbourNode)) {
-//                        nodeCost.put(neighbourNode, nodeCost.get(node) + edge.getWeight());
-//                        parentNodes.put(neighbourNode, node);
-//                        queue.add(neighbourNode);
-//                    }
                     if ((node.getCost() + edge.getWeight()) < neighbourNode.getCost()) {
                         neighbourNode.setCost(node.getCost() + edge.getWeight());
                         parentNodes.put(neighbourNode, node);

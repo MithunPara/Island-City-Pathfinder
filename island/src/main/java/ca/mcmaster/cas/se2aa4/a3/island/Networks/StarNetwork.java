@@ -5,10 +5,10 @@ import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileSegment;
 import ca.mcmaster.cas.se2aa4.a3.island.BuildingBlocks.TileVertex;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.CityType;
 import ca.mcmaster.cas.se2aa4.a3.island.Terrains.LandTerrains.Land;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.Edge;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.Node;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.ShortestPath;
-import ca.mcmaster.cas.se2aa4.a4.pathfinder.UndirectedGraph;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Edge;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.Node;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.PathFinder.ShortestPath;
+import ca.mcmaster.cas.se2aa4.a4.pathfinder.Graph.UndirectedGraph;
 
 import java.awt.*;
 import java.util.ArrayList;
